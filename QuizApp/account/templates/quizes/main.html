@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block scripts %}
+    <script src="{% static 'quizes/main.js' %}" defer></script> 
+{% endblock scripts %}
+
+{% block title %}
+{{obj.name}}
+{% endblock title %}
+
+{% block content %}
+<html>
+  <head>
+    <!-- Template Main CSS File -->
+    <link href="{% static 'style.css'%}" rel="stylesheet">
+    <style>
+
+      body{
+        background: url("{% static 'photo6.jpg' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      h1{
+          margin-top: 20px;
+          text-align: center;
+          font-size: 60px;
+          font-family: 'century gothic';
+          color: #ffffcc;
+          text-shadow: 0 0 5px #fff,
+                      0 0 10px #fff, 
+                      0 0 20px rgb(236, 55, 55), 
+                      0 0 30px rgb(236, 55, 55), 
+                      0 0 40px rgb(236, 55, 55), 
+                      0 0 55px rgb(236, 55, 55), 
+                      0 0 70px rgb(236, 55, 55);
+      }
+
+      @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
+
+        p {
+          border-right: solid 3px rgba(34, 85, 34, 0.75);
+          white-space: nowrap;
+          overflow: hidden;    
+          font-family: 'Source Code Pro', monospace;  
+          font-size: 28px;
+          color: rgba(255,255,255,.70);
+          margin: 0 auto;
+        }
+
+        /* Animation */
+        p {
+          animation: animated-text 4s steps(29,end) 1s 1 normal both,
+                    animated-cursor 600ms steps(29,end) infinite;
+        }
+
+        /* text animation */
+        @keyframes animated-text{
+          from{width: 0;}
+          to{width: 472px;}
+        }
+
+        /* cursor animations */
+        @keyframes animated-cursor{
+          from{border-right-color: rgba(0,255,0,.75);}
+          to{border-right-color: transparent;}
+        }
+
+    </style>
+  </head>
+
+  <body>
+  
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+      <div class="hero-container" data-aos="fade-in">
+          <h1 style = "font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; text-align: center; color:rgb(250, 37, 37);" class="display-1 text-decoration">SKILLIFY</h1>
+          <p class="display-7 d-none d-sm-block" style="color: rgb(255, 255, 255);">  Upgrade | Evaluate | Success </p>
+        </div>
+    </section>
+    <br>
+    <br>
+    <br>
+    <!-- End Hero -->
+
+  </body>
+</html>
+
+<!-- Modal -->
+<div class="modal fade" id="quizStartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Lets get started!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        {% if user.is_authenticated %}
+          <div class="modal-body" id="modal-body-confirm"></div>
+          <div class="modal-footer">
+            <button type="button" id="start-button" class="btn btn-primary">Yes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+          </div>
+          {% else %}
+          <div class="modal-body">
+            <h4>Login first to start the quiz</h4>
+          </div>
+          {% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="h1" style="color: rgba(255, 255, 255, 0.877); font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Take a Skill Test</div>
+<hr>
+{% for obj in object_list %}
+    <div class="h4" style="color: white;">{{obj.pk}}.  
+      <button
+        class="btn btn modal-button"
+        data-pk="{{obj.pk}}"
+        data-quiz="{{obj.name}}"
+        data-questions="{{obj.number_of_questions}}"
+        data-difficulty="{{obj.difficulty}}"
+        data-time="{{obj.time}}"
+        data-pass = "{{obj.required_score_to_pass}}"
+        data-toggle="modal"
+        data-target="#quizStartModal">
+        <div class="h4" style="color: white;"> {{obj.name}} </div>
+    </button></div><br>
+
+{% endfor %}
+<br>
+<footer class="bg-light text-muted py-0"> 
+  <div class="container py-3">
+  <ul class="list-inline mb-0 text-center"> 
+      <li class="list-inline-item">2022 Let's Quiz. Skillify! </li>
+      <li class="list-inline-item">Upgrad Yourself</li>
+    </ul>
+</div>
+</footer>
+
+{% endblock content %}

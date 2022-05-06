@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} About {% endblock %}
+{% block content%}
+<style>
+    .wrapper{
+        text-align: center;
+    }
+    .button{
+        position: absolute;
+        top: 50%;
+    }
+    body{
+        background: url("{% static 'photo6.jpg' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+  
+</style>
+
+
+<div>
+<div class="h1" style="color: white; text-align: center;" >About</div>
+<br>
+<p style="color: azure;"><b>Skillify</b> follows a questions based approach to learning, with strong belief that vocational and work-related skills are best acquired when we question real life situations.
+   <br>
+</p>
+<h4 style="text-align: center; color: greenyellow;"><b>"KNOWLEDGE IS NOT A SKILL, KNOWLEDGE PLUS TEN THOUSAND TIMES IS SKILL"</b></h4>
+    <br>
+<p style="color: azure;">
+    You can only improve your learning by answering questions directly to help you learn and explore for solution.
+    <br>
+    Taking a quiz gives your brain retrieval practice, and so helps you retrieve it again when you need it.
+    <br><br>
+    <h3 style="color: azure;"><b>How will the skillify help you improve?</b></h3>
+</p>
+    <p style="color: azure;">
+    • Quizzes give feedback that helps in advanced learning. Assessments direct the learners to identify weak areas where more learning is needed.
+    
+    Actually answering questions gives you retrieval practice and makes things you answer easier to recall later.. 
+    <br>
+    • Scientific evidence suggests that if you study something and take a quiz or test, you retain it better than if you just study.
+    </p>
+    <br>
+    <div class="wrapper">
+        <button type="button" class= "btn btn-success modal-button, col-lg-6" onclick="location.href='/login'"><h3>Let's get started!</h3></a></button>
+    </div>
+</div>
+<br>
+<footer class="bg-light text-muted py-0"> 
+  <div class="container py-3">
+  <ul class="list-inline mb-0 text-center"> 
+      <li class="list-inline-item">2022 Let's Quiz. Skillify! </li>
+      <li class="list-inline-item">Upgrad Yourself</li>
+    </ul>
+</div>
+</footer>
+{% endblock content %}

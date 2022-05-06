@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Sign Up {% endblock %}
+{% block content %}
+<style>
+    body{
+        background: url("{% static 'photo6.jpg' %}") no-repeat;
+        background-size: cover;
+      }
+    #fourth{
+        background: url("/static/signupnow4.png") 99% no-repeat;
+        height: 730px;
+        width: 1120px;
+        object-fit: fill;
+     }
+  </style>
+
+  <div class="row py-4 p-4 bg-light rounded shadow-sm"  id="fourth">
+
+    <div class="col-lg-5">
+        <div class="bg-white rounded-pill px-4 py-2 text-uppercase font-weight-bold"
+            style="color:black;font-weight:bold; text-align: center"><h3><b>Sign Up!</b></h3>
+        </div>
+        <br>
+        <form class="row g-4" method="POST" action="/signup/">{% csrf_token %}
+            <div class="col-md-12">
+                <label for="inputname" class="form-label" style="font-weight: bold;"><i>First Name</i></label>
+                <input type="text" placeholder="Enter First Name" style="text-align: center;"class="form-control" id="first_name" name="first_name" required>
+            </div>
+            <div class="col-md-12">
+                <label for="inputname" class="form-label" style="font-weight: bold;"><i>Last Name</i></label>
+                <input type="text" placeholder="Enter Last Name" style="text-align: center;"class="form-control" id="last_name" name="last_name" required>
+            </div>
+            <div class="col-md-12">
+                <label for="inputname" class="form-label" style="font-weight: bold;"><i>Username</i></label>
+                <input type="text" placeholder="Enter Username" style="text-align: center;"class="form-control" id="username" name="username" required>
+            </div>
+            <div class="col-md-12">
+                <label for="inputname" class="form-label" style="font-weight: bold;"><i>Email</i></label>
+                <input type="email" placeholder="Enter your Email" style="text-align: center;"class="form-control" id="email" name="email" required>
+            </div>
+            <div class="col-md-12">
+                <label for="inputname" class="form-label" style="font-weight: bold;"><i>Password</i></label>
+                <input type="password" placeholder="Enter Password" style="text-align: center;"class="form-control" id="password1" name="password1" required>
+            </div>
+            <div class="col-md-12">
+                <label for="inputname" class="form-label" style="font-weight: bold;"><i>Confirm Password</i></label>
+                <input type="password" placeholder="Confirm Password" style="text-align: center;"class="form-control" id="password2" name="password2" required>
+            </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <br>
+        </div>
+  </div>
+
+  {% endblock %}
