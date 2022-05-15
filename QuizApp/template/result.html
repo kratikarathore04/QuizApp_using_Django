@@ -1,7 +1,58 @@
 {% extends 'base.html' %}
-
+{% load static %}
+{% block title %} {{obj.name}} {% endblock title %}
 {% block content %}
-<div id="score-box" style="text-align: center; color: #fff;" ></div>
-<div id="result-box"></div>
 
+<style>
+    
+    body{
+        background: url("{% static 'photo6.jpg' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    h3{
+        margin-top: 20px;
+          text-align: left;
+          font-size: 40px;
+          font-family: 'century gothic';
+          color: #ffffcc;
+          text-shadow: 0 0 5px #fff,
+                      0 0 10px #fff, 
+                      0 0 20px rgb(236, 55, 55), 
+                      0 0 30px rgb(236, 55, 55), 
+                      0 0 40px rgb(236, 55, 55), 
+                      0 0 55px rgb(236, 55, 55), 
+                      0 0 70px rgb(236, 55, 55);
+    }
+  
+</style>
+
+<h3 style="color: white; text-align: center;"><strong>My Quizzes</strong></h3>
+<br>
+<div class="container">
+<table class="table table-striped table-bordered" style="color: white;" >
+    <thead>
+        <tr style=" text-align: center;">
+            <th>Sr.no.</th>
+            <th>Quiz Name</th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for res in result %}
+        <tr>
+            <td style="color: white;">{{forloop.counter}}</td>
+            <td style="color: white;">{{res.quiz}}</td>
+            <td style="color: white;">{{res.score}} %</td>
+        </tr>
+        {% empty %}
+          <tr>
+            <td class="bg-light text-center font-italic" colspan="3">You haven't completed any quiz yet.</td>
+          </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+</div>
 {% endblock %}

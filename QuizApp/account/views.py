@@ -124,3 +124,6 @@ def save_quiz_view(request, pk):
 def about(request):
     return render(request, "extra.html") 
 
+def result(request):
+    result = Result.objects.filter(user=request.user)
+    return render(request, "result.html", {'result':result})
